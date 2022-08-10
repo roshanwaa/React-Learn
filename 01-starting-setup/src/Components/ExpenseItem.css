@@ -2,11 +2,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     padding: 0.5rem;
     margin: 1rem 5px;
-    border-radius: 12px;
-    background-color: #c5825e;
+    background-color: #7634108a;
 }
 
 .expense-item__description {
@@ -20,7 +18,7 @@
 }
 
 .expense-item h2 {
-    color: #3a3a3a;
+    /* color: #3a3a3a; */
     font-size: 1rem;
     flex: 1;
     margin: 0 1rem;
@@ -31,7 +29,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: #000000;
-    background-color: #a4a0a5;
+    background-color: #a7ae9ead;
     border: 1px solid #000000;
     padding: 0.5rem;
     border-radius: 12px;
