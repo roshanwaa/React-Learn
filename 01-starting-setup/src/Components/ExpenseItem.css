@@ -4,7 +4,7 @@
     align-items: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     padding: 0.5rem;
-    margin: 1rem 0;
+    margin: 1rem 5px;
     border-radius: 12px;
     background-color: #c5825e;
 }
@@ -30,9 +30,9 @@
 .expense-item__price {
     font-size: 1rem;
     font-weight: bold;
-    color: rgb(0, 0, 0);
-    background-color: #c796de;
-    border: 1px solid rgb(0, 0, 0);
+    color: #000000;
+    background-color: #a4a0a5;
+    border: 1px solid #000000;
     padding: 0.5rem;
     border-radius: 12px;
 }

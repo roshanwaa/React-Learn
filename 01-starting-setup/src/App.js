@@ -1,9 +1,10 @@
-import ExpensesItem from './Components/ExpensesItem.js';
+import Expenses from './Components/Expenses.js';
+
 function App() {
+  // console.log(myExpenses[0].title);
   return (
     <div>
-      {/* <h2>Let's get started!</h2> */}
-      <ExpensesItem />
+      <Expenses></Expenses>
     </div>
   );
 }
