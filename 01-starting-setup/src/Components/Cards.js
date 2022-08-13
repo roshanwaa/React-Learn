@@ -1,3 +1,4 @@
+import React from 'react';
 import './Cards.css';
 function Card(props) {
   const classNam = 'card ' + props.className;
