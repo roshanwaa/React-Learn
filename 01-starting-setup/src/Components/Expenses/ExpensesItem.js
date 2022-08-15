@@ -5,7 +5,7 @@ import ExpenseDate from '../Expenses/ExpenseDate';
 
 export const ExpensesItem = (props) => {
   const [title, setTitle] = useState(props.title);
-  console.log('Expenses item evaluate by React');
+  // console.log('Expenses item evaluate by React');
   // let title = props.title;
 
   const clickHandler = () => {

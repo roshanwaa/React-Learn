@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Expenses from './Components/Expenses/Expenses';
-import {NewExpense} from './Components/NewExpense/NewExpense'
+import { NewExpense } from './Components/NewExpense/NewExpense';
 
 export const App = () => {
   const myExpenses = [
