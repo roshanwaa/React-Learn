@@ -32,7 +32,16 @@ export const ExpenseForm = () => {
   };
 
   const submitHandler = (event) => {
-    console.log(enterAmount, enterTitle, enterDate);
+    event.preventDefault();
+    const expenseData = {
+      title: enterTitle,
+      amount: enterAmount,
+      date: new Date(enterDate),
+    };
+    console.log(expenseData);
+    setEnterTitle('');
+    setEnterAmount('');
+    setEnterDate('');
   };
 
   return (
@@ -43,6 +52,7 @@ export const ExpenseForm = () => {
           <input
             type="text"
             placeholder="Title"
+            value={enterTitle}
             onChange={titleChangeHandler}
           />
         </div>
@@ -53,6 +63,7 @@ export const ExpenseForm = () => {
             min="10"
             step="10"
             placeholder="Amount"
+            value={enterAmount}
             onChange={amountChangeHandler}
           />
         </div>
@@ -62,13 +73,14 @@ export const ExpenseForm = () => {
             type="date"
             min="2022-08-01"
             max="2022-12-31"
-            placeholder="dd.mm.yyyy"
+            placeholder="Month dd, yyyy"
+            value={enterDate}
             onChange={dateChangeHandler}
           />
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button">Add Expenses</button>
+        <button type="submit">Add Expenses</button>
       </div>
     </form>
   );
