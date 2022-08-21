@@ -25,6 +25,18 @@
     color: white;
 }
 
+.expense-Btn {
+    background-color: #0a0a23;
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.expense-Btn:hover {
+    outline-color: transparent;
+    box-shadow: 0 0 0 4px #5a01a7;
+}
+
 .expense-item__price {
     font-size: 1rem;
     font-weight: bold;
@@ -33,6 +45,12 @@
     border: 1px solid #000000;
     padding: 0.5rem;
     border-radius: 12px;
+}
+
+.expense-item__price:hover {
+    outline-color: transparent;
+    box-shadow: 0 0 0 4px #5a01a7;
+    cursor: context-menu
 }
 
 @media (min-width: 580px) {
