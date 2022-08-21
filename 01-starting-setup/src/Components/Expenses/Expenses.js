@@ -22,7 +22,7 @@ export default function Expenses(props) {
         {props.items.map((expense) => (
           <ExpensesItem
             title={expense.title}
-            amount={expense.amt}
+            amount={expense.amount}
             date={expense.date}
           />
         ))}
