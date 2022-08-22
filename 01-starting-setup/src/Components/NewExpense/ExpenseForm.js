@@ -74,7 +74,6 @@ export const ExpenseForm = (props) => {
             type="date"
             min="2022-08-01"
             max="2022-12-31"
-            placeholder="Month dd, yyyy"
             value={enterDate}
             onChange={dateChangeHandler}
           />
