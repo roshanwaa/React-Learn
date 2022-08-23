@@ -8,13 +8,13 @@ const DUMMY_COMPONENT = [
     id: 'e1',
     title: 'Chai',
     amount: 500,
-    date: new Date(2022, 6, 15),
+    date: new Date(2020, 6, 15),
   },
   {
     id: 'e2',
     title: 'Travel',
     amount: 300,
-    date: new Date(2022, 5, 25),
+    date: new Date(2021, 5, 25),
   },
   {
     id: 'e3',
