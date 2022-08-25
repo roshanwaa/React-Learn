@@ -35,7 +35,7 @@ export const ExpenseForm = (props) => {
     event.preventDefault();
     const expenseData = {
       title: enterTitle,
-      amount: enterAmount,
+      amount: +enterAmount,
       date: new Date(enterDate),
     };
     props.onSaveExpanseData(expenseData);
@@ -72,8 +72,8 @@ export const ExpenseForm = (props) => {
           <label>Date</label>
           <input
             type="date"
-            min="2022-08-01"
-            max="2022-12-31"
+            min="2022-01-01"
+            max="2025-12-31"
             value={enterDate}
             onChange={dateChangeHandler}
           />
