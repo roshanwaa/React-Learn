@@ -17,8 +17,8 @@ const FormControl = styled.div`
   & input {
     display: block;
     width: 100%;
-    border: 1px solid ${(props) => (props.onInvalid ? 'red' : '#7FB77E')};
-    background: ${(props) => (props.onInvalid ? '#7FB77E' : 'transparent')};
+    border: 1px solid ${(props) => (props.onInvalid ? '#16213e' : '#7FB77E')};
+    background: ${(props) => (props.onInvalid ? '#EE6983' : 'transparent')};
     font: inherit;
     line-height: 1.5rem;
     padding: 0 0.25rem;
@@ -26,8 +26,8 @@ const FormControl = styled.div`
 
   & input:focus {
     outline: none;
-    background: #fad0ec;
-    border-color: #8b005d;
+    background: #eee3cb;
+    border-color: #16213e;
   }
 `;
 
