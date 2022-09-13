@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Card } from '../UI/Card.js';
 import FormControl from '@mui/material/FormControl';
+import Classes from './AddUser.module.css';
 
 import Button from '@mui/material/Button';
 export const AddUsers = (props) => {
@@ -11,7 +12,7 @@ export const AddUsers = (props) => {
     event.preventDefault();
   };
   return (
-    <Card>
+    <Card className={Classes.input}>
       <Box
         component="form"
         sx={{
