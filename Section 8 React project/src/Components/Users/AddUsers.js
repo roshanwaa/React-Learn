@@ -21,45 +21,61 @@ export const AddUsers = (props) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    if (enterUserAge === '' || enterUserName === '') {
+      alert('Please enter your Name and Age!');
+      return;
+    }
+    if (+enterUserAge < 1) {
+      alert('Age is less then the minimum age required');
+      setEnterUserAge('');
+      return;
+    }
     console.log(enterUserName, enterUserAge);
+    setEnterUserName('');
+    setEnterUserAge('');
   };
 
   return (
-    <Card className={Classes.input}>
-      <Box
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 3, width: '30ch' },
-        }}
-        noValidate
-        autoComplete="off"
-        onSubmit={addUserHandler}
-      >
-        <FormControl>
-          <label htmlFor="userName">Username</label>
-          <div>
-            <TextField
-              id="outlined-required userName"
-              label="Username"
-              type="text"
-              onChange={userNameChangeHandler}
-            />
-          </div>
-          <label htmlFor="age">Age (in years)</label>
-          <div>
-            <TextField
-              id="outlined-password-input age"
-              label="Age"
-              type="number"
-              minRows="0"
-              step="10"
-              onChange={userAgeChangeHandler}
-            />
-          </div>
+    <>
+      {' '}
+      <Card className={Classes.input}>
+        <Box
+          component="form"
+          sx={{
+            '& .MuiTextField-root': { m: 2, width: '30ch' },
+          }}
+          noValidate
+          autoComplete="off"
+          onSubmit={addUserHandler}
+        >
+          <FormControl>
+            <label htmlFor="userName">Username</label>
+            <div>
+              <TextField
+                id="outlined-required userName"
+                label="Username"
+                type="text"
+                onChange={userNameChangeHandler}
+                value={enterUserName}
+              />
+            </div>
+            <label htmlFor="age">Age (in years)</label>
+            <div>
+              <TextField
+                id="outlined-password-input age"
+                label="Age"
+                type="number"
+                minRows="0"
+                step="10"
+                onChange={userAgeChangeHandler}
+                value={enterUserAge}
+              />
+            </div>
 
-          <SubmitButton type="submit">Add User</SubmitButton>
-        </FormControl>
-      </Box>
-    </Card>
+            <SubmitButton type="submit">Add User</SubmitButton>
+          </FormControl>
+        </Box>
+      </Card>
+    </>
   );
 };
