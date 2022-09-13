@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Card } from '../UI/Card.js';
@@ -7,10 +7,23 @@ import Classes from './AddUser.module.css';
 import { SubmitButton } from '../UI/Button';
 
 export const AddUsers = (props) => {
-  const addUserHandler = (event) => {
-    console.log('Submit button Work');
-    event.preventDefault();
+  const [enterUserName, setEnterUserName] = useState('');
+  const [enterUserAge, setEnterUserAge] = useState('');
+
+  const userNameChangeHandler = (event) => {
+    setEnterUserName(event.target.value);
+    // console.log(event.value);
   };
+  const userAgeChangeHandler = (event) => {
+    setEnterUserAge(event.target.value);
+    // console.log(event.value);
+  };
+
+  const addUserHandler = (event) => {
+    event.preventDefault();
+    console.log(enterUserName, enterUserAge);
+  };
+
   return (
     <Card className={Classes.input}>
       <Box
@@ -29,6 +42,7 @@ export const AddUsers = (props) => {
               id="outlined-required userName"
               label="Username"
               type="text"
+              onChange={userNameChangeHandler}
             />
           </div>
           <label htmlFor="age">Age (in years)</label>
@@ -39,6 +53,7 @@ export const AddUsers = (props) => {
               type="number"
               minRows="0"
               step="10"
+              onChange={userAgeChangeHandler}
             />
           </div>
 
