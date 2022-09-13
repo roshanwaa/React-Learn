@@ -4,11 +4,11 @@ import TextField from '@mui/material/TextField';
 import { Card } from '../UI/Card.js';
 import FormControl from '@mui/material/FormControl';
 import Classes from './AddUser.module.css';
+import { SubmitButton } from '../UI/Button';
 
-import Button from '@mui/material/Button';
 export const AddUsers = (props) => {
   const addUserHandler = (event) => {
-    alert('Submit button Work');
+    console.log('Submit button Work');
     event.preventDefault();
   };
   return (
@@ -42,14 +42,7 @@ export const AddUsers = (props) => {
             />
           </div>
 
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            onSubmit={addUserHandler}
-          >
-            Success
-          </Button>
+          <SubmitButton type="submit">Add User</SubmitButton>
         </FormControl>
       </Box>
     </Card>
