@@ -5,7 +5,10 @@ function App() {
   const [getUserList, setUserList] = useState([]);
   const onAddUsers = (uName, uAge) => {
     setUserList((prvUserList) => {
-      return [...prvUserList, { name: uName, age: uAge }];
+      return [
+        ...prvUserList,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ];
     });
   };
 
