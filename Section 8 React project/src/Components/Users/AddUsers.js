@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import { ErrorModal } from '../UI/ErrorModal';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Card } from '../UI/Card.js';
 import FormControl from '@mui/material/FormControl';
 import Classes from './AddUser.module.css';
 import { SubmitButton } from '../UI/Button';
-import { ErrorModal } from '../UI/ErrorModal';
 
 export const AddUsers = (props) => {
   const [enterUserName, setEnterUserName] = useState('');
@@ -23,11 +23,11 @@ export const AddUsers = (props) => {
   const addUserHandler = (event) => {
     event.preventDefault();
     if (enterUserAge === '' || enterUserName === '') {
-      alert('Please enter your Name and Age!');
+      // alert('Please enter your Name and Age!');
       return;
     }
     if (+enterUserAge < 1) {
-      alert('Age is less then the minimum age required');
+      // alert('Age is less then the minimum age required');
       setEnterUserAge(0);
       return;
     }
@@ -38,7 +38,7 @@ export const AddUsers = (props) => {
   };
 
   return (
-    <>
+    <div>
       <ErrorModal
         title="An error has occurred"
         message="something went wrong"
@@ -81,6 +81,6 @@ export const AddUsers = (props) => {
           </FormControl>
         </Box>
       </Card>
-    </>
+    </div>
   );
 };

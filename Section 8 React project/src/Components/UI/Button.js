@@ -9,7 +9,7 @@ export const SubmitButton = (props) => {
       type={props.type || 'button'}
       onClick={props.onClick}
       variant="contained"
-      color="secondary"
+      color="primary"
       size="large"
     >
       {props.children}
