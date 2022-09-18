@@ -10,6 +10,7 @@ import { SubmitButton } from '../UI/Button';
 export const AddUsers = (props) => {
   const [enterUserName, setEnterUserName] = useState('');
   const [enterUserAge, setEnterUserAge] = useState('');
+  const [error, setError] = useState();
 
   const userNameChangeHandler = (event) => {
     setEnterUserName(event.target.value);
@@ -23,10 +24,18 @@ export const AddUsers = (props) => {
   const addUserHandler = (event) => {
     event.preventDefault();
     if (enterUserAge === '' || enterUserName === '') {
+      setError({
+        title: 'Invalid Input',
+        message: 'Pleases enter a valid name and age (non-empty value)',
+      });
       // alert('Please enter your Name and Age!');
       return;
     }
     if (+enterUserAge < 1) {
+      setError({
+        title: 'Invalid Age',
+        message: 'Pleases enter a valid age.',
+      });
       // alert('Age is less then the minimum age required');
       setEnterUserAge(0);
       return;
@@ -36,13 +45,19 @@ export const AddUsers = (props) => {
     setEnterUserName('');
     setEnterUserAge('');
   };
+  const errorHAndler = () => {
+    setError(null);
+  };
 
   return (
     <div>
-      <ErrorModal
-        title="An error has occurred"
-        message="something went wrong"
-      />
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHAndler}
+        />
+      )}
       <Card className={Classes.input}>
         <Box
           component="form"

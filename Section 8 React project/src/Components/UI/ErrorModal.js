@@ -10,7 +10,7 @@ import classes from './ErrorModal.module.css';
 export const ErrorModal = (props) => {
   return (
     <>
-      <div className={classes.backdrop} />
+      <div className={classes.backdrop} onClick={props.onConfirm} />
       <Card className={classes.modal}>
         <CardContent className={classes.header}>
           <Typography variant="h3" component="div">
@@ -22,7 +22,7 @@ export const ErrorModal = (props) => {
             <Typography variant="h4">{props.message}</Typography>
           </div>
           <footer className={classes.actions}>
-            <SubmitButton>Okay</SubmitButton>
+            <SubmitButton onClick={props.onConfirm}>Okay</SubmitButton>
           </footer>
         </CardContent>
       </Card>
