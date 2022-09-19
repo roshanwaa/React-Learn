@@ -1,0 +1,33 @@
+JSX Limitations :-{
+    return (
+        <h2>Hi There</h2>
+        <p>This dose not work in the current state of the application.</p>
+    );
+
+    => you cant return more than one "root" jsx element (you also cant store more than one "root" jsx element in the current state of the application Variable.).
+
+    "So if you return a value or if you store a value in a variable or in a constant or in a property that value must only be exactly one JSX element.
+    Now that one element which you are allowed to have may of course have more children which then also can be adjacent to each other."
+    
+
+    Because this also isn’t valid JavaScript :-
+
+        return ( ;
+            React.createElement(‘h2’, {}, ‘Hi there!’)
+            React.createElement(‘p’, {}, ‘This does not work :-(‘)
+        );
+    "your JSX code translates into React create element And you must only have one React create element call which you return. Now any nested JSX elements so inside of that one root element could be side by side because into the React create element world those children of that root element would be the third and fifth and so on argument."
+
+} 
+But because of that natural limitation of JavaScript we must only have one root JSX element.
+
+The Solution: {
+    TODO: Always warp adjacent elements.
+        return (
+            <div>
+                <h2>Hi there</h2>
+                <p>This dose not work :-</p>
+            </div>
+        );
+        important: Doesn't have to be a <div></div> = ANY element will do the trick.
+}
