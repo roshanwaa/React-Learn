@@ -6,6 +6,7 @@ import { Card } from '../UI/Card.js';
 import FormControl from '@mui/material/FormControl';
 import Classes from './AddUser.module.css';
 import { SubmitButton } from '../UI/Button';
+import { Wrapper } from '../Helpers/Wrapper';
 
 export const AddUsers = (props) => {
   const [enterUserName, setEnterUserName] = useState('');
@@ -50,7 +51,7 @@ export const AddUsers = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <ErrorModal
           title={error.title}
@@ -96,6 +97,6 @@ export const AddUsers = (props) => {
           </FormControl>
         </Box>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
