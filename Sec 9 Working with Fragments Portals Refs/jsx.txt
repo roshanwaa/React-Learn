@@ -56,3 +56,32 @@ A new problem: "<div></div>" Soup{
     "In Bigger app, you can easily end up with tons of unnecessary <div></div> elements (Or other element) which add no semantic meaning to the page but are only there because of the React's / JSX requirements."
     
 }
+
+****************************************************************************
+
+TODO: 
+Introducing React Fragments: {
+    Syntax: 
+        return (
+            <React.Fragment>
+                <h2>Hi there</h2>
+                <p>This dose not work :-</p>
+            </React.Fragment>
+        );
+
+----------------------+++++++++------------------------
+                        Or
+    Shortcut: 
+        return (
+            <>
+                <h2>Hi there</h2>
+                <p>This dose not work :-</p>
+            </>
+        );
+
+---------------------------------------------------------
+
+    "It's an empty wrapper  component:
+            It's doesn't render any real HTML element the DOM. But it fulfills React's / JSX requirements."
+
+}
