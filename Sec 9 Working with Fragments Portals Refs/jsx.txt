@@ -85,3 +85,10 @@ Introducing React Fragments: {
             It's doesn't render any real HTML element the DOM. But it fulfills React's / JSX requirements."
 
 }
+
+Understanding React portals {
+    Its a bit like styling a <div> like a button a nd adding an event listener to it: it'll work, but its but its not a good practice. 
+    Syntax: 
+            <div onClick={onClickHandler}>Click me im a bad button</div>
+            
+}
