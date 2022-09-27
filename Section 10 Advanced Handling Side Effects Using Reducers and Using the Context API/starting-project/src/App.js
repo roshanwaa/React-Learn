@@ -21,13 +21,19 @@ function App() {
   const loginHandler = (email, password) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
+
+    // its will set the user email and password to local Storage
     localStorage.setItem('isLoggedIn', '1');
-    // localStorage.setItem('password', password);
+    localStorage.setItem('Email', email);
+    localStorage.setItem('Password', password);
     setIsLoggedIn(true);
   };
 
   const logoutHandler = () => {
+    // its remove data from localStorage
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('Email');
+    localStorage.removeItem('Password');
     setIsLoggedIn(false);
   };
 
