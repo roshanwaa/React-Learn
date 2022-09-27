@@ -11,6 +11,19 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  /* Is the run one time until the page not to be reload. Cause of empty array in array we not set any dependency. If we set any of the dependencies useEffect reruns whenever the component was re-evaluated. */
+
+  /* We declare dependencies in array */
+
+  /* return anonymous function clean up the dependencies and its run when the component is removed.*/
+  useEffect(() => {
+    console.log('EFFECT RUNNING!');
+
+    return () => {
+      console.log('EFFECT CLEANUP!');
+    };
+  }, []);
+
   useEffect(() => {
     const timeOutIdentifier = setTimeout(() => {
       console.log('Check From validity!');
