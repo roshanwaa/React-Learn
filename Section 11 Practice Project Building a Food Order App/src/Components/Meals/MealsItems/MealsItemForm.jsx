@@ -8,12 +8,12 @@ export const MealsItemForm = (props) => {
       <Input
         label="Amount"
         input={{
-          id: 'amount',
+          id: 'amount_' + props.id, // this changed!
           type: 'number',
-          min: 1,
-          max: 15,
-          step: 1,
-          defaultValue: 1,
+          min: '1',
+          max: '50',
+          step: '1',
+          defaultValue: '1',
         }}
       />
       <button>Add</button>
