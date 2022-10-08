@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const DUMMY_MEALS = [
   {
     id: 'm1',
