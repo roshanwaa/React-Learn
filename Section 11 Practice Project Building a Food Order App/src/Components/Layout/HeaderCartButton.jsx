@@ -9,7 +9,7 @@ export const HeaderCartButton = () => {
         <CartIcon />
       </span>
       <span>Your Cart</span>
-      <span className={classes.badge}>100$</span>
+      <span className={classes.badge}>₹ 10</span>
     </button>
   );
 };
