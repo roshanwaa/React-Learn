@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from './Modal.module.css';
 import ReactDOM from 'react-dom';
+import classes from './Modal.module.css';
 
 const Backdrop = (props) => {
-  return <div className={classes.backdrop} />;
+  return <div className={classes.backdrop} onClick={props.onClose} />;
 };
 
 const ModalOverlay = (props) => {
@@ -21,7 +21,7 @@ export const Modal = (props) => {
     <>
       {/* <Backdrop />
       <ModalOverlay>{props.children}</ModalOverlay> */}
-      {ReactDOM.createPortal(<Backdrop />, portalEle)}
+      {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalEle)}
       {ReactDOM.createPortal(
         <ModalOverlay>{props.children}</ModalOverlay>,
         portalEle

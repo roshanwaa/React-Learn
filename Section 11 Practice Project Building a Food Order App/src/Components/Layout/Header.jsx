@@ -3,7 +3,7 @@ import classes from './Header.module.css';
 // import mealsImg from '../../Assets/meals.jpg';
 import { HeaderCartButton } from './HeaderCartButton';
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
@@ -12,7 +12,7 @@ export const Header = () => {
           alt=""
         />
         <h1>Chai Sutta Bar</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onShowCart} />
       </header>
       <div className={classes['main-image']}>
         {/* <img className={classes['main-image']} src={mealsImg} alt="chai" /> */}
