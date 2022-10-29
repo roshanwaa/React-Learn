@@ -4,13 +4,11 @@ import classes from './Header.module.css';
 import { HeaderCartButton } from './HeaderCartButton';
 
 export const Header = (props) => {
+ 
+
   return (
     <>
       <header className={classes.header}>
-        <img
-          src="https://images.yourstory.com/cs/images/companies/ChaiSutta-1637585790850.jpg?fm=auto&ar=1:1&mode=fill&fill=solid&fill-color=fff"
-          alt=""
-        />
         <h1>Chai Sutta Bar</h1>
         <HeaderCartButton onClick={props.onShowCart} />
       </header>
