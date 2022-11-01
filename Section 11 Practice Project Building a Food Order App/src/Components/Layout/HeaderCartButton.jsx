@@ -17,7 +17,7 @@ export const HeaderCartButton = (props) => {
         <CartIcon />
       </span>
       <span>Your Cart</span>
-      <span className={classes.badge}>₹ {numOfCartItems}</span>
+      <span className={classes.badge}>{numOfCartItems}</span>
     </button>
   );
 };
