@@ -7,7 +7,7 @@ export const HeaderCartButton = (props) => {
   const cartCtx = useContext(CartContext);
 
   const numOfCartItems = cartCtx.items.reduce((currentNum, item) => {
-    // console.log(currentNum);
+    // console.log(currentNum, item.amount);
     return currentNum + item.amount;
   }, 0);
 
