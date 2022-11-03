@@ -7,9 +7,13 @@ import CartItem from './CartItem';
 export const Cart = (props) => {
   const cartCTX = useContext(CartContext);
 
-  const cartItemRemoveHandler = (id) => {};
+  const cartItemRemoveHandler = (id) => {
+    cartCTX.removeItem(id);
+  };
 
-  const cartItemAddHandler = (itm) => {};
+  const cartItemAddHandler = (itm) => {
+    cartCTX.addItem(itm);
+  };
 
   const cartItems = (
     <ul className={classes['cart-items']}>

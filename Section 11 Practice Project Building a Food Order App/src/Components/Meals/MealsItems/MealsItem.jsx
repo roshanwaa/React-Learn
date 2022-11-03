@@ -8,7 +8,6 @@ export const MealsItem = (props) => {
 
   const price = `₹ ${props.price.toFixed(2)}`;
   const addToChartHandler = (amount) => {
-    // console.log(amt * price);
     cartCTX.addItem({
       id: props.id,
       name: props.name,
@@ -17,6 +16,7 @@ export const MealsItem = (props) => {
     });
     return amount;
   };
+
   return (
     <li className={classes.meals}>
       <div>

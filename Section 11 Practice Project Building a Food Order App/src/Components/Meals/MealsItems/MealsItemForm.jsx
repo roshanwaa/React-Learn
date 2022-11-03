@@ -39,7 +39,9 @@ export const MealsItemForm = (props) => {
           defaultValue: '1',
         }}
       />
-      <button>+ Add</button>
+      <button value="Submit" type="submit">
+        + Add
+      </button>
       {!amountIsValid && <p>Please enter a valid amount.</p>}
     </form>
   );
