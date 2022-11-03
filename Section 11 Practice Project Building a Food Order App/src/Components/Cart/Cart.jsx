@@ -7,12 +7,15 @@ import CartItem from './CartItem';
 export const Cart = (props) => {
   const cartCTX = useContext(CartContext);
 
+  const totalAmount = `₹  ${cartCTX.totalAmount.toFixed(2)}`;
+  const hasItems = cartCTX.items.length > 0;
+
   const cartItemRemoveHandler = (id) => {
     cartCTX.removeItem(id);
   };
 
   const cartItemAddHandler = (itm) => {
-    cartCTX.addItem(itm);
+    cartCTX.addItem({ ...itm, amount: 1 });
   };
 
   const cartItems = (
@@ -33,15 +36,12 @@ export const Cart = (props) => {
     </ul>
   );
 
-  const totalAmt = `₹  ${cartCTX.totalAmount.toFixed(2)}`;
-  const hasItems = cartCTX.items.length > 0;
-
   return (
     <Modal onClose={props.onClose}>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>{totalAmt}</span>
+        <span>{totalAmount}</span>
       </div>
       <div className={classes.actions}>
         <button className={classes['button--alt']} onClick={props.onClose}>

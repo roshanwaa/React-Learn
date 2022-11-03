@@ -14,11 +14,10 @@ export const MealsItem = (props) => {
       amount: amount,
       price: props.price,
     });
-    return amount;
   };
 
   return (
-    <li className={classes.meals}>
+    <li className={classes.meal}>
       <div>
         <h2>{props.name}</h2>
         <div className={classes.description}>
@@ -27,7 +26,7 @@ export const MealsItem = (props) => {
         <div className={classes.price}>{price}</div>
       </div>
       <div>
-        <MealsItemForm onAddToChart={addToChartHandler} />
+        <MealsItemForm id={props.id} onAddToChart={addToChartHandler} />
       </div>
     </li>
   );

@@ -31,17 +31,15 @@ export const MealsItemForm = (props) => {
         ref={amountInputRef}
         label="Amount"
         input={{
+          id: 'amount_' + props.id,
           type: 'number',
-          id: props.id, // this changed!
           min: '1',
           max: '50',
           step: '1',
           defaultValue: '1',
         }}
       />
-      <button value="Submit" type="submit">
-        + Add
-      </button>
+      <button>+ Add</button>
       {!amountIsValid && <p>Please enter a valid amount.</p>}
     </form>
   );

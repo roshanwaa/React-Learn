@@ -31,14 +31,14 @@ const DUMMY_MEALS = [
 ];
 
 export const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((item) => {
+  const mealsList = DUMMY_MEALS.map((meal) => {
     return (
       <MealsItem
-        id={item.id} // this is new!
-        key={item.id}
-        name={item.name}
-        description={item.description}
-        price={item.price}
+        id={meal.id} // this is new!
+        key={meal.id}
+        name={meal.name}
+        description={meal.description}
+        price={meal.price}
       />
     );
   });
