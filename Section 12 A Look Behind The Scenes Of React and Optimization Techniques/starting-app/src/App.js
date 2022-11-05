@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
-import Button from './components/UI/Button/Button';
+import { DemoOutput } from './components/Demo/DemoOutput';
+import Button from './components/UI/Button/Button.js';
 
 import './App.css';
 
 function App() {
   const [showParagraph, setShowParagraph] = useState(false);
 
+  console.log('App is Running');
   const showParagraphHandler = () => {
     // setShowParagraph(true);
     setShowParagraph((prevShowParagraph) => !prevShowParagraph);
@@ -15,7 +17,8 @@ function App() {
   return (
     <div className="app">
       <h1>Hi there!</h1>
-      {showParagraph && <p>This is new!</p>}
+      {/* {showParagraph && <DemoOutput />} */}
+      <DemoOutput show={showParagraph} />
       <Button onClick={showParagraphHandler}>Show Paragraph!</Button>
     </div>
   );
