@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 // import { DemoOutput } from './components/Demo/DemoOutput';
 import DemoOutput from './components/Demo/DemoOutput';
@@ -10,17 +10,16 @@ function App() {
   const [showParagraph, setShowParagraph] = useState(false);
 
   console.log('App is Running');
-  const showParagraphHandler = () => {
+  const showParagraphHandler = useCallback(() => {
     // setShowParagraph(true);
-    setShowParagraph((prevShowParagraph) => prevShowParagraph);
-  };
+    setShowParagraph((prevShowParagraph) => !prevShowParagraph);
+  }, []);
 
   return (
     <div className="app">
       <h1>Hi there!</h1>
       {/* {showParagraph && <DemoOutput />} */}
-      <h2>Hello World!</h2>
-      <DemoOutput show={false} />
+      <DemoOutput show={showParagraph} />
       <Button onClick={showParagraphHandler}>Show Paragraph!</Button>
     </div>
   );
