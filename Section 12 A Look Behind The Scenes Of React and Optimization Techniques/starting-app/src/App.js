@@ -8,11 +8,20 @@ import './App.css';
 
 function App() {
   const [showParagraph, setShowParagraph] = useState(false);
+  const [allowToggle, setAllowToggle] = useState(false);
 
   console.log('App is Running');
   const showParagraphHandler = useCallback(() => {
     // setShowParagraph(true);
-    setShowParagraph((prevShowParagraph) => !prevShowParagraph);
+
+    if (allowToggle) {
+      setShowParagraph((prevShowParagraph) => !prevShowParagraph);
+    }
+  }, [allowToggle]);
+
+  const allowToggleHandler = useCallback(() => {
+    setAllowToggle(true);
+    console.log('App');
   }, []);
 
   return (
@@ -20,6 +29,7 @@ function App() {
       <h1>Hi there!</h1>
       {/* {showParagraph && <DemoOutput />} */}
       <DemoOutput show={showParagraph} />
+      <Button onClick={allowToggleHandler}>Allow Toggle</Button>
       <Button onClick={showParagraphHandler}>Show Paragraph!</Button>
     </div>
   );
