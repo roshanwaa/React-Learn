@@ -5,9 +5,10 @@ import MoviesList from './components/MoviesList';
 import './App.css';
 function App() {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  
   async function fetchMoviesHandler() {
+    setIsLoading(true);
     const response = await fetch('https://swapi.py4e.com/api/films/');
     // .then((response) => {
     //   return response.json();
@@ -23,6 +24,7 @@ function App() {
       };
     });
     setMovies(transformedMovies);
+    setIsLoading(false);
   }
 
   const unique_id = uuid();
@@ -33,7 +35,11 @@ function App() {
         <button onClick={fetchMoviesHandler}>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList key={unique_id} movies={movies} />
+        {!isLoading && movies.length > 0 && (
+          <MoviesList key={unique_id} movies={movies} />
+        )}
+        {!isLoading && movies.length === 0 && <h2>Found no movies.</h2>}
+        {isLoading && <h3>Loading...</h3>}
       </section>
     </React.Fragment>
   );
