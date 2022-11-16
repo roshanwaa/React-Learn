@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 // import { v4 as uuid } from 'uuid';
 
 import MoviesList from './components/MoviesList';
@@ -8,7 +8,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  async function fetchMoviesHandler() {
+  // async function fetchMoviesHandler() {
+  const fetchMoviesHandler = useCallback(async function () {
     setIsLoading(true);
     setError(null);
     try {
@@ -37,7 +38,13 @@ function App() {
       setError(error.message);
     }
     setIsLoading(false);
-  }
+  }, []);
+
+  useEffect(() => {
+    fetchMoviesHandler();
+
+    return () => {};
+  }, [fetchMoviesHandler]);
 
   // const unique_id = uuid();
 
