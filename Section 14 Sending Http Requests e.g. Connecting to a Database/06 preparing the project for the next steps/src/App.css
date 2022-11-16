@@ -9,6 +9,7 @@ section {
 }
 
 button {
+  margin-right: 2rem;
   font: inherit;
   cursor: pointer;
   background: #230052;
