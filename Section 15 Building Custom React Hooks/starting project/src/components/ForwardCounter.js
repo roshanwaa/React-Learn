@@ -1,17 +1,13 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 import Card from './Card';
 
+// !USe Custom Hooks
+import useCounter from '../hook/use-counter';
+
 const ForwardCounter = () => {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  // * Call custom hook function
+  const counter = useCounter();
 
   return <Card>{counter}</Card>;
 };
