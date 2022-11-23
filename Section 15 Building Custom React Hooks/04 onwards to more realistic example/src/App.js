@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 import Tasks from './components/Tasks/Tasks';
 import NewTask from './components/NewTask/NewTask';
@@ -7,15 +7,15 @@ import useHttps from './hooks/use-https';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const transformTask = (tasksObj) => {
-    const loadedTasks = [];
+  // const transformTask = useCallback((tasksObj) => {
+  //   const loadedTasks = [];
 
-    for (const taskKey in tasksObj) {
-      loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
-    }
+  //   for (const taskKey in tasksObj) {
+  //     loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
+  //   }
 
-    setTasks(loadedTasks);
-  };
+  //   setTasks(loadedTasks);
+  // }, []);
 
   // const { isLoading, error, sendRequest } = httpData;
 
@@ -38,20 +38,37 @@ function App() {
   //   setIsLoading(false);
   // };
 
-  const {
-    isLoading,
-    error,
-    sendRequest: fetchTasks,
-  } = useHttps(
-    {
-      url: 'https://react-movie-app-7b37a-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json',
-    },
-    transformTask
-  );
+  // const {
+  //   isLoading,
+  //   error,
+  //   sendRequest: fetchTasks,
+  // } = useHttps(
+  //   // {
+  //   //   url: 'https://react-movie-app-7b37a-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json',
+  // },
+  // transformTask
+  // );
 
   useEffect(() => {
-    fetchTasks();
-  }, []);
+    const transformTask =
+      ((tasksObj) => {
+        const loadedTasks = [];
+
+        for (const taskKey in tasksObj) {
+          loadedTasks.push({ id: taskKey, text: tasksObj[taskKey].text });
+        }
+
+        setTasks(loadedTasks);
+      },
+      []);
+
+    fetchTasks(
+      {
+        url: 'https://react-movie-app-7b37a-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json',
+      },
+      transformTask
+    );
+  }, [fetchTasks]);
 
   const taskAddHandler = (task) => {
     setTasks((prevTasks) => prevTasks.concat(task));
