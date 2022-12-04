@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 const SimpleInput = (props) => {
   const nameInputRef = useRef();
@@ -6,6 +6,14 @@ const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState('');
 
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
+
+  useEffect(() => {
+    if (enteredNameIsValid) {
+      console.log('Is Validity');
+    }
+
+    return () => {};
+  }, []);
 
   const nameInputChangeHandler = (e) => {
     // * its took the current value of the input filed by using useState
@@ -22,6 +30,7 @@ const SimpleInput = (props) => {
       // if the input is empty then exit the submit handler and alert a message
       setEnteredNameIsValid(false);
       // alert('Please enter a valid name');
+      console.log('Please enter a valid name');
       return;
     }
 
