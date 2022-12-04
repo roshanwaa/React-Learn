@@ -5,6 +5,8 @@ const SimpleInput = (props) => {
 
   const [enteredName, setEnteredName] = useState('');
 
+  const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
+
   const nameInputChangeHandler = (e) => {
     // * its took the current value of the input filed by using useState
     setEnteredName(e.target.value);
@@ -18,15 +20,18 @@ const SimpleInput = (props) => {
     // * check the input is empty and then exit the submit handler
     if (enteredName.trim() === '') {
       // if the input is empty then exit the submit handler and alert a message
-      alert('Please enter a valid name');
+      setEnteredNameIsValid(false);
+      // alert('Please enter a valid name');
       return;
     }
 
+    setEnteredNameIsValid(true);
+
     //* its also took the current value of the input filed by using ref
-    const enteredValue2 = nameInputRef.current.value;
+    // const enteredValue2 = nameInputRef.current.value;
 
     console.log(enteredName);
-    console.log(enteredValue2);
+    // console.log(enteredValue2);
 
     // * It will clear the value of the input field by using ref and its works but its not a ideal solution because we are directly manipulating the dom here,by using vanilla js to directly reach out to the dom and change something there.
 
@@ -36,9 +41,13 @@ const SimpleInput = (props) => {
     setEnteredName('');
   };
 
+  const nameInputClasses = enteredNameIsValid
+    ? 'form-control'
+    : 'form-control invalid';
+
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className="form-control">
+      <div className={nameInputClasses}>
         <label htmlFor="name">Your Name</label>
         <input
           // set or define the current value of the input
@@ -49,6 +58,9 @@ const SimpleInput = (props) => {
           // set value to empty string
           value={enteredName}
         />
+        {!enteredNameIsValid && (
+          <p className={'error-text'}>Name must be not be empty</p>
+        )}
       </div>
       <div className="form-actions">
         <button>Submit</button>
