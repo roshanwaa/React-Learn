@@ -7,6 +7,10 @@ const SimpleInput = (props) => {
 
   const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
 
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+
+  // * its check the current value of the input is valid and its valid by default cause the enteredNameIsValid are true
+
   useEffect(() => {
     if (enteredNameIsValid) {
       console.log('Is Validity');
@@ -24,6 +28,8 @@ const SimpleInput = (props) => {
   const formSubmitHandler = (e) => {
     // * set a default event or page. the page is not reloaded anymore
     e.preventDefault();
+
+    setEnteredNameTouched(true);
 
     // * check the input is empty and then exit the submit handler
     if (enteredName.trim() === '') {
@@ -50,9 +56,13 @@ const SimpleInput = (props) => {
     setEnteredName('');
   };
 
-  const nameInputClasses = enteredNameIsValid
-    ? 'form-control'
-    : 'form-control invalid';
+  // check the entered name is not empty and the name is not touched
+  const nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
+
+  // * its check the form control is valid or not
+  const nameInputClasses = nameInputIsValid
+    ? 'form-control invalid'
+    : 'form-control';
 
   return (
     <form onSubmit={formSubmitHandler}>
@@ -67,7 +77,7 @@ const SimpleInput = (props) => {
           // set value to empty string
           value={enteredName}
         />
-        {!enteredNameIsValid && (
+        {nameInputIsValid && (
           <p className={'error-text'}>Name must be not be empty</p>
         )}
       </div>
