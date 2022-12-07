@@ -63,11 +63,20 @@ body {
   flex: 1;
 }
 
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  color: #3f3f3f;
+  border-color: #0e0c09;
+  cursor: not-allowed;
+}
+
 button {
   font: inherit;
-  background-color: #240370;
+  background-color: #444347;
   color: white;
-  border: 1px solid #240370;
+  border: 1px solid #000000;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
@@ -75,8 +84,8 @@ button {
 
 button:hover,
 button:active {
-  background-color: #33059e;
-  border-color: #33059e;
+  background-color: #8e7bb4;
+  border-color: #ffffff;
 }
 
 .form-actions {
