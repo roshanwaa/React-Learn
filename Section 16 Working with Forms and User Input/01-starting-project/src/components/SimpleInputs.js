@@ -1,8 +1,6 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 const SimpleInput = (props) => {
-  const nameInputRef = useRef();
-
   const [enteredName, setEnteredName] = useState('');
 
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
@@ -60,7 +58,6 @@ const SimpleInput = (props) => {
         <label htmlFor="name">Your Name</label>
         <input
           // set or define the current value of the input
-          ref={nameInputRef}
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
