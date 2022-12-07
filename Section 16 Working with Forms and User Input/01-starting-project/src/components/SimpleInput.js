@@ -22,7 +22,22 @@ const SimpleInput = (props) => {
   const nameInputChangeHandler = (e) => {
     // * its took the current value of the input filed by using useState
     setEnteredName(e.target.value);
+
+    // * It's check the if the input is fill the error message is disappear and set the setEnteredNameIsValid is true.
+    if (enteredName.trim() !== '') {
+      setEnteredNameIsValid(true);
+    }
     console.log(e.target.value);
+  };
+
+  // * It's check the input value is valid or if not fill the input then show the error message
+  const nameInputBlurHandler = (e) => {
+    setEnteredNameTouched(true);
+
+    if (enteredName.trim() === '') {
+      setEnteredNameIsValid(false);
+      // return;
+    }
   };
 
   const formSubmitHandler = (e) => {
@@ -74,6 +89,7 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
           // set value to empty string
           value={enteredName}
         />
