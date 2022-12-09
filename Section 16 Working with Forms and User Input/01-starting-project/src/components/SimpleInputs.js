@@ -6,7 +6,7 @@ const SimpleInput = (props) => {
 
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
-  //   const [formIsValid, setFormIsValid] = useState(false);
+  // const [formIsValid, setFormIsValid] = useState(false);
 
   // its set the enteredName is  not a empty string
 
@@ -18,9 +18,11 @@ const SimpleInput = (props) => {
   const nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
   const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
 
+  // * Its check the button if enteredName and email is fill then the button is enabled otherwise is by default is disabled.
   let formIsValid = false;
 
-  if (enteredNameIsValid) {
+  // If the input are fill the button is enabled
+  if (enteredNameIsValid && enteredEmailIsValid) {
     formIsValid = true;
   }
 
@@ -69,7 +71,7 @@ const SimpleInput = (props) => {
     setEnteredEmailTouched(false);
   };
 
-  // * its check the form control is valid or not
+  // * its check and set the css to the form control
   const nameInputClasses = nameInputIsValid
     ? 'form-control invalid'
     : 'form-control';
