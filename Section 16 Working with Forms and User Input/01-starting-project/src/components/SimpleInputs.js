@@ -1,21 +1,31 @@
 import { useState } from 'react';
+import { useInput } from './Hooks/useInput';
 
 const SimpleInput = (props) => {
-  const [enteredName, setEnteredName] = useState('');
-  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+  // const [enteredName, setEnteredName] = useState('');
+  // const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
   // const [formIsValid, setFormIsValid] = useState(false);
 
+  // call the useInput
+  const {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameInputBlurHandler,
+    reset: resetNameInput,
+  } = useInput((value) => value.trim() !== '');
+
   // its set the enteredName is  not a empty string
 
-  const enteredNameIsValid = enteredName.trim() !== '';
+  // check the entered name and email is not empty and the name is not touched
+  // const enteredNameIsValid = enteredName.trim() !== '';
+  // const nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
 
   const enteredEmailIsValid = enteredEmail.includes('@');
-
-  // check the entered name is not empty and the name is not touched
-  const nameInputIsValid = !enteredNameIsValid && enteredNameTouched;
   const emailInputIsValid = !enteredEmailIsValid && enteredEmailTouched;
 
   // * Its check the button if enteredName and email is fill then the button is enabled otherwise is by default is disabled.
@@ -28,20 +38,20 @@ const SimpleInput = (props) => {
 
   // * its check the current value of the input is valid and its valid by default cause the enteredNameIsValid are true
 
-  const nameInputChangeHandler = (e) => {
-    // * its took the current value of the input filed by using useState
+  // * its took the current value of the input filed by using useState
+  /*  const nameInputChangeHandler = (e) => {
     setEnteredName(e.target.value);
 
     console.log(e.target.value);
-  };
+  }; */
   const emailInputChangeHandler = (e) => {
     setEnteredEmail(e.target.value);
   };
 
   // * It's check the input value is valid or if not fill the input then show the error message
-  const nameInputBlurHandler = (e) => {
-    setEnteredNameTouched(true);
-  };
+  // const nameInputBlurHandler = (e) => {
+  //   setEnteredNameTouched(true);
+  // };
 
   const emailInputBlurHandler = () => {
     setEnteredEmailTouched(true);
@@ -51,7 +61,7 @@ const SimpleInput = (props) => {
     // * set a default event or page. the page is not reloaded anymore
     e.preventDefault();
 
-    setEnteredNameTouched(true);
+    // resetNameInput(true);
 
     // * check the input is empty and then exit the submit handler
 
@@ -64,15 +74,14 @@ const SimpleInput = (props) => {
     console.log(enteredName, enteredEmail);
 
     // * It will clear the value of the input field
-    setEnteredName('');
-    setEnteredEmail('');
+    resetNameInput();
 
-    setEnteredNameTouched(false);
+    setEnteredEmail('');
     setEnteredEmailTouched(false);
   };
 
   // * its check and set the css to the form control
-  const nameInputClasses = nameInputIsValid
+  const nameInputClasses = nameInputHasError
     ? 'form-control invalid'
     : 'form-control';
   const emailInputClasses = emailInputIsValid
@@ -87,12 +96,12 @@ const SimpleInput = (props) => {
           // set or define the current value of the input
           type="text"
           id="name"
-          onChange={nameInputChangeHandler}
+          onChange={nameChangeHandler}
           onBlur={nameInputBlurHandler}
           // set value to empty string
           value={enteredName}
         />
-        {nameInputIsValid && (
+        {nameInputHasError && (
           <p className={'error-text'}>Name must be not be empty</p>
         )}
       </div>
