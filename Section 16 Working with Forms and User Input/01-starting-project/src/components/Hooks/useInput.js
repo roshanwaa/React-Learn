@@ -10,8 +10,6 @@ export const useInput = (validateValue) => {
   const valueChangeHandler = (e) => {
     // * its took the current value of the input filed by using useState
     setEnteredValue(e.target.value);
-
-    console.log(e.target.value);
   };
 
   const inputBlurHandler = (e) => {

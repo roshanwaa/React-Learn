@@ -1,5 +1,9 @@
 import { useInput } from './Hooks/useInput';
-const BasicForm = (props) => {
+
+const isNotEmpty = (value) => value.trim() !== '';
+const isEmailEmpty = (value) => value.includes('@');
+
+const BasicForm = () => {
   const {
     value: fNameEntered,
     isValid: fNameEnteredIsValid,
@@ -7,7 +11,7 @@ const BasicForm = (props) => {
     valueChangeHandler: fNameChangeHandler,
     inputBlurHandler: fNameInputBlurHandler,
     reset: fNameResetInput,
-  } = useInput((value) => value.trim() !== '');
+  } = useInput(isNotEmpty);
 
   const {
     value: lNameEntered,
@@ -16,7 +20,7 @@ const BasicForm = (props) => {
     valueChangeHandler: lNameChangeHandler,
     inputBlurHandler: lNameInputBlurHandler,
     reset: lNameResetInput,
-  } = useInput((value) => value.trim() !== '');
+  } = useInput(isNotEmpty);
 
   const {
     value: emailEntered,
@@ -25,7 +29,7 @@ const BasicForm = (props) => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailInputBlurHandler,
     reset: resetEmailInput,
-  } = useInput((value) => value.includes('@'));
+  } = useInput(isEmailEmpty);
 
   let formIsValid = false;
 
@@ -37,8 +41,11 @@ const BasicForm = (props) => {
     e.preventDefault();
 
     if (!fNameEntered && !lNameEntered && !emailEntered) {
-      return <h2>Wrong Input</h2>;
+      return;
     }
+
+    alert('Submitted');
+    console.log(fNameEntered, lNameEntered, emailEntered);
 
     fNameResetInput();
     lNameResetInput();
