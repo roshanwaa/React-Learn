@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './AvailableMeals.module.css';
 import { Card } from '../UI/Card';
 import { MealsItem } from './MealsItems/MealsItem';
@@ -30,8 +30,36 @@ import { MealsItem } from './MealsItems/MealsItem';
 //   },
 // ];
 
+const url =
+  'https://food-order-app-9b789-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json';
+
 export const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map((meal) => {
+  const [meals, setMeals] = useState([]);
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const response = await fetch(url);
+
+      const responseData = await response.json();
+
+      // console.log(responseData);
+
+      const loadedMealsData = [];
+
+      for (const key in responseData) {
+        loadedMealsData.push({
+          id: key,
+          description: responseData[key].description,
+          name: responseData[key].name,
+          price: responseData[key].price,
+        });
+      }
+      setMeals(loadedMealsData);
+    };
+    fetchMeals();
+  }, []);
+
+  const mealsList = meals.map((meal) => {
     return (
       <MealsItem
         id={meal.id} // this is new!
