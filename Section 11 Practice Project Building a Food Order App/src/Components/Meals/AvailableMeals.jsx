@@ -3,6 +3,8 @@ import classes from './AvailableMeals.module.css';
 import { Card } from '../UI/Card';
 import { MealsItem } from './MealsItems/MealsItem';
 
+// import Spinner from 'react-bootstrap/Spinner';
+
 // const DUMMY_MEALS = [
 //   {
 //     id: 'm1',
@@ -35,6 +37,7 @@ const url =
 
 export const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -57,7 +60,16 @@ export const AvailableMeals = () => {
       setMeals(loadedMealsData);
     };
     fetchMeals();
+    setIsLoading(false);
   }, []);
+
+  if (!isLoading) {
+    return (
+      <section className={classes.mealsLoading}>
+        <p>Loading...</p>
+      </section>
+    );
+  }
 
   const mealsList = meals.map((meal) => {
     return (
