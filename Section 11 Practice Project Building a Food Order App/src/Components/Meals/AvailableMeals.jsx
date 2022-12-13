@@ -3,7 +3,7 @@ import classes from './AvailableMeals.module.css';
 import { Card } from '../UI/Card';
 import { MealsItem } from './MealsItems/MealsItem';
 
-// import Spinner from 'react-bootstrap/Spinner';
+import { Spinner } from 'react-bootstrap';
 
 // const DUMMY_MEALS = [
 //   {
@@ -48,6 +48,7 @@ export const AvailableMeals = () => {
       // console.log(responseData);
 
       const loadedMealsData = [];
+      setIsLoading(false);
 
       for (const key in responseData) {
         loadedMealsData.push({
@@ -60,13 +61,12 @@ export const AvailableMeals = () => {
       setMeals(loadedMealsData);
     };
     fetchMeals();
-    setIsLoading(false);
   }, []);
 
-  if (!isLoading) {
+  if (isLoading) {
     return (
       <section className={classes.mealsLoading}>
-        <p>Loading...</p>
+        <Spinner animation="grow" variant="light" />
       </section>
     );
   }
