@@ -5,32 +5,6 @@ import { MealsItem } from './MealsItems/MealsItem';
 
 import { Spinner } from 'react-bootstrap';
 
-// const DUMMY_MEALS = [
-//   {
-//     id: 'm1',
-//     name: 'Chai',
-//     description: 'Finest fish and veggies',
-//     price: 22,
-//   },
-//   {
-//     id: 'm2',
-//     name: 'Schnitzel',
-//     description: 'A german specialty!',
-//     price: 16.5,
-//   },
-//   {
-//     id: 'm3',
-//     name: 'Barbecue Burger',
-//     description: 'American, raw, meaty',
-//     price: 12.99,
-//   },
-//   {
-//     id: 'm4',
-//     name: 'Green Bowl',
-//     description: 'Healthy...and green...',
-//     price: 18.99,
-//   },
-// ];
 
 const url =
   'https://food-order-app-9b789-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json';

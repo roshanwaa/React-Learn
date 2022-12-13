@@ -3,6 +3,7 @@ import classes from './Cart.module.css';
 import { Modal } from '../UI/Modal';
 import { CartContext } from '../../Store/Cart-Context';
 import CartItem from './CartItem';
+import { Checkout } from './Checkout';
 
 export const Cart = (props) => {
   const cartCTX = useContext(CartContext);
@@ -49,6 +50,7 @@ export const Cart = (props) => {
         </button>
         {hasItems && <button className={classes.button}>Order</button>}
       </div>
+      <Checkout />
     </Modal>
   );
 };
