@@ -38,17 +38,21 @@ const url =
 export const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [httpError, setHttpError] = useState();
 
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error('Something is wrong!');
+      }
 
       const responseData = await response.json();
 
       // console.log(responseData);
 
       const loadedMealsData = [];
-      setIsLoading(false);
 
       for (const key in responseData) {
         loadedMealsData.push({
@@ -59,14 +63,27 @@ export const AvailableMeals = () => {
         });
       }
       setMeals(loadedMealsData);
+      setIsLoading(false);
     };
-    fetchMeals();
+
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setHttpError(error.message);
+    });
   }, []);
 
   if (isLoading) {
     return (
       <section className={classes.mealsLoading}>
         <Spinner animation="grow" variant="light" />
+      </section>
+    );
+  }
+
+  if (httpError) {
+    return (
+      <section className={classes.mealsError}>
+        <h3>{httpError}</h3>
       </section>
     );
   }
