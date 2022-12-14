@@ -14,6 +14,7 @@ label {
 }
 
 .btn {
+  margin-right: 1rem;
   width: 130px;
   height: 40px;
   color: #fff;
@@ -29,10 +30,11 @@ label {
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   outline: none;
-  background: #804226;
+  background: #923c14;
   border: none;
   z-index: 1;
 }
+
 .btn:after {
   position: absolute;
   content: '';
@@ -41,19 +43,22 @@ label {
   top: 0;
   right: 0;
   z-index: -1;
-  background-color: #e96848;
+  background-color: #4e251a;
   border-radius: 5px;
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
+
 .btn:hover {
   color: #fff;
 }
+
 .btn:hover:after {
   left: 0;
   width: 100%;
 }
+
 .btn:active {
   top: 2px;
 }

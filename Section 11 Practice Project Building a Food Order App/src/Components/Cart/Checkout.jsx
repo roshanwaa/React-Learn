@@ -1,9 +1,13 @@
 import React from 'react';
 import classes from './Checkout.module.css';
 
-export const Checkout = () => {
+export const Checkout = (props) => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form action="" className={classes.formGroup}>
+    <form onSubmit={submitHandler} className={classes.formGroup}>
       <div className={classes.control}>
         <label htmlFor="name">Name</label>
         <input
@@ -32,6 +36,11 @@ export const Checkout = () => {
           placeholder="Street"
         />
       </div>
+
+      <button onClick={props.onCancel} className={classes.btn}>
+        Cancel
+      </button>
+
       <button className={classes.btn}>Confirm</button>
     </form>
   );
