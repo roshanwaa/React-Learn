@@ -3,7 +3,7 @@ import classes from './Cart.module.css';
 import { Modal } from '../UI/Modal';
 import { CartContext } from '../../Store/Cart-Context';
 import CartItem from './CartItem';
-import { Checkout } from './Checkout';
+import Checkout from './Checkout';
 
 export const Cart = (props) => {
   const cartCTX = useContext(CartContext);
