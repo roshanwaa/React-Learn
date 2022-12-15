@@ -8,6 +8,8 @@ import Checkout from './Checkout';
 export const Cart = (props) => {
   const cartCTX = useContext(CartContext);
   const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
 
   const totalAmount = `₹  ${cartCTX.totalAmount.toFixed(2)}`;
   const hasItems = cartCTX.items.length > 0;
@@ -24,8 +26,9 @@ export const Cart = (props) => {
     setIsCheckout(true);
   };
 
-  const submitOrderHandler = (userData) => {
-    fetch(
+  const submitOrderHandler = async (userData) => {
+    setIsSubmitted(true);
+    await fetch(
       'https://food-order-app-9b789-default-rtdb.asia-southeast1.firebasedatabase.app/order.json',
       {
         method: 'POST',
@@ -35,6 +38,9 @@ export const Cart = (props) => {
         }),
       }
     );
+    setIsSubmitted(false);
+    setDidSubmit(true);
+    cartCTX.clearCart();
   };
 
   const cartItems = (
@@ -68,8 +74,8 @@ export const Cart = (props) => {
     </div>
   );
 
-  return (
-    <Modal onClose={props.onClose}>
+  const cartModalContent = (
+    <>
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
@@ -80,6 +86,27 @@ export const Cart = (props) => {
         <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
       )}
       {!isCheckout && moduleAction}
+    </>
+  );
+
+  const isSubmittingModalContent = <h4>Sending Order Data...</h4>;
+
+  const didSubmitModalContent = (
+    <>
+      <h4>Order data was successfully Submitted</h4>
+      <div className={classes.actions}>
+        <button className={classes['button--alt']} onClick={props.onClose}>
+          Close
+        </button>
+      </div>
+    </>
+  );
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmitted && !didSubmit && cartModalContent}
+      {isSubmitted && isSubmittingModalContent}
+      {!isSubmitted && didSubmit && didSubmitModalContent}
     </Modal>
   );
 };
