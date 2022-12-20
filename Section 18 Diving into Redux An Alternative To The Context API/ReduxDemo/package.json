@@ -1,0 +1,14 @@
+{
+  "name": "reduxdemo",
+  "version": "1.0.0",
+  "description": "Redux Demo",
+  "main": "redux-demo.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "author": "roshanwaa",
+  "license": "ISC",
+  "dependencies": {
+    "redux": "^4.2.0"
+  }
+}
