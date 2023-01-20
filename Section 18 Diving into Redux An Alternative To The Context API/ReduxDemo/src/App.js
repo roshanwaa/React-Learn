@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import './App.css';
 function App() {
@@ -7,7 +8,7 @@ function App() {
         <h1>Increment and Decrement Counter</h1>
         <h4>Using react and Redux</h4>
         <div className="quantity">
-          <a href="" className="quantity__minus" title="Decrement">
+          <a className="quantity__minus" title="Decrement">
             <span>-</span>
           </a>
           <input
@@ -16,7 +17,7 @@ function App() {
             className="quantity__input"
             value="0"
           />
-          <a href="" className="quantity__plus" title="Increment">
+          <a className="quantity__plus" title="Increment">
             <span>+</span>
           </a>
         </div>
