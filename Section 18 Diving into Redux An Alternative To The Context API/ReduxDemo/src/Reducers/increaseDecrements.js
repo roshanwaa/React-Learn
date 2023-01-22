@@ -1,5 +1,6 @@
-const initialState = 0;
-const changeNumber = (state = initialState, action) => {
+const initialState = 10;
+
+const changeTheNumber = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT':
       return state + 1;
@@ -8,8 +9,18 @@ const changeNumber = (state = initialState, action) => {
       return state - 1;
 
     default:
-      break;
+      return state;
+    // break;
   }
+
+  //! OR
+  // if (action.type === 'INCREMENT') {
+  //   return (state = state + 1);
+  // } else if (action.type === 'DECREMENT') {
+  //   return (state = state - 1);
+  // } else {
+  //   return;
+  // }
 };
 
-export default changeNumber;
+export default changeTheNumber;
