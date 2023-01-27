@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { counterAction } from '../Redux/Store/index';
+
 import classes from './Counter.module.css';
 
 // * This is use for class base Component
@@ -13,24 +15,33 @@ const Counter = () => {
   const dispatch = useDispatch();
 
   const incrementCounterHandler = () => {
-    dispatch({ type: 'INCREMENT' });
+    // dispatch({ type: 'INCREMENT' });
+    dispatch(counterAction.increment());
+
     console.log('Increment Click');
   };
 
   const increaseCounterHandler = () => {
-    dispatch({ type: 'increaseByAmt', amount: 5 });
+    // dispatch({ type: 'increaseByAmt', amount: 5 });
+
+    dispatch(counterAction.incense(10)); //{type: 'some auto-generated uniq identifier'}
+
     console.log('increase By Amt Click');
   };
   const decrementCounterHandler = () => {
-    dispatch({ type: 'DECREMENT' });
+    // dispatch({ type: 'DECREMENT' });
+
+    dispatch(counterAction.decrement());
 
     console.log('Decrement Click');
   };
 
-  const toggleCounterHandler = () => {
-    dispatch({ type: 'TOGGLE', showCounter: false });
-    console.log('Button Click');
-  };
+  const toggleCounterHandler = () =>
+    // dispatch({ type: 'TOGGLE', showCounter: false });
+    {
+      dispatch(counterAction.toggleCounter());
+      console.log('Button Click');
+    };
 
   return (
     <main className={classes.counter}>
