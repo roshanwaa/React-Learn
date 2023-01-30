@@ -1,6 +1,6 @@
 import classes from './Auth.module.css';
 import { useDispatch } from 'react-redux';
-import { authenticatorAction } from '../Redux/Store/index';
+import { authenticatorAction } from '../Redux/Store/authStore';
 
 const Auth = () => {
   // const authenticated = useSelector(
